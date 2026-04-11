@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free 30-Day LLC Roadmap | Joss Consulting Group</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage-deep: #2D5A3D;
+    --sage-dark: #4A7A5C;
+    --sage: #7A9E87;
+    --sage-pale: #EBF3EE;
+    --terra: #C17F5A;
+    --terra-dark: #9A5E38;
+    --terra-light: #FFF0EE;
+    --gold: #B8760A;
+    --cream: #FAF8F3;
+    --warm-gray: #F0EDE8;
+    --charcoal: #2C2C28;
+    --mid: #6B6B64;
+    --dark-bg: #1C2E24;
+    --dark-mid: #243B2C;
+    --white: #FFFFFF;
+    --red: #C0392B;
+    --red-light: #FDECEA;
+    --green: #27875A;
+    --green-light: #E6F4EC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.6; }
+
+  /* HERO */
+  .hero {
+    background: var(--dark-bg);
+    padding: 72px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--sage-dark);
+    opacity: 0.12;
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -60px;
+    width: 260px; height: 260px;
+    background: var(--terra);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--terra);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    color: var(--white);
+    line-height: 1.2;
+    max-width: 780px;
+    margin: 0 auto 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero h1 span { color: var(--terra); }
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 20px);
+    color: #99B8A4;
+    max-width: 620px;
+    margin: 0 auto 48px;
+    line-height: 1.65;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-strip {
+    background: var(--terra);
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: 0; left: 0;
+  }
+
+  /* PAIN SECTION */
+  .pain-section {
+    background: var(--terra-light);
+    border-left: 6px solid var(--terra);
+    padding: 40px 40px 36px;
+    max-width: 760px;
+    margin: 48px auto;
+    border-radius: 0 8px 8px 0;
+  }
+  .pain-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--terra-dark);
+    margin-bottom: 20px;
+  }
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: var(--charcoal);
+  }
+  .pain-item .icon { color: var(--red); font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .pain-bold {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--terra-dark);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(193,127,90,0.3);
+  }
+
+  /* BENEFITS */
+  .benefits-section {
+    max-width: 760px;
+    margin: 0 auto 48px;
+    padding: 0 24px;
+  }
+  .benefits-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--sage-dark);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--white);
+    border-left: 4px solid var(--sage-dark);
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  }
+  .benefit-item .chk { color: var(--sage-dark); font-size: 18px; font-weight: 700; flex-shrink: 0; }
+  .benefit-item p { font-size: 16px; color: var(--charcoal); line-height: 1.5; }
+  .benefit-item strong { color: var(--sage-deep); }
+
+  /* FORM BOX */
+  .form-box {
+    background: var(--dark-bg);
+    padding: 52px 40px 48px;
+    max-width: 560px;
+    margin: 0 auto 64px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .form-box::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: var(--sage-dark);
+    opacity: 0.10;
+    border-radius: 50%;
+  }
+  .form-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--white);
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .form-box p {
+    font-size: 14px;
+    color: #99B8A4;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .form-field {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .form-field::placeholder { color: rgba(255,255,255,0.4); }
+  .form-field:focus { outline: none; border-color: var(--sage); }
+  .cta-btn {
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--terra);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 4px;
+    position: relative;
+    z-index: 1;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: var(--terra-dark); }
+  .form-fine { font-size: 12px; color: #666; margin-top: 14px; position: relative; z-index: 1; }
+
+  /* CREDIBILITY */
+  .cred-section {
+    background: var(--white);
+    border-top: 3px solid var(--sage-pale);
+    padding: 56px 24px;
+  }
+  .cred-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .cred-inner { grid-template-columns: 1fr; } }
+  .cred-bio h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--sage-deep);
+    margin-bottom: 16px;
+  }
+  .cred-bio p { font-size: 15px; color: var(--charcoal); line-height: 1.7; margin-bottom: 12px; }
+  .cred-bio .quote {
+    font-size: 14px;
+    color: var(--sage-dark);
+    font-style: italic;
+    padding: 12px 16px;
+    background: var(--sage-pale);
+    border-left: 3px solid var(--sage-dark);
+    margin-top: 16px;
+  }
+  .cred-list h4 {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--terra-dark);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cred-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--charcoal);
+  }
+  .cred-item .dot { color: var(--sage-dark); font-weight: 700; flex-shrink: 0; }
+
+  /* FOOTER */
+  .page-footer {
+    background: var(--dark-bg);
+    padding: 24px;
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Free Guide — Instant Download</div>
+  <h1>Your LLC Got Denied Because of Your <span>STRUCTURE</span> — Not Your Credit.</h1>
+  <p class="hero-sub">Grab the FREE 30-Day Roadmap that shows you the exact order to set up your LLC — the way banks want to see it — so you stop getting rejected and start getting approved.</p>
+  <div class="hero-strip"></div>
+</section>
+
+<!-- PAIN SECTION -->
+<div style="max-width:760px; margin:0 auto; padding:0 24px;">
+  <div class="pain-section">
+    <h3>Sound familiar?</h3>
+    <div class="pain-item"><span class="icon">✗</span><span>You formed your LLC — but you still can't get a business bank account.</span></div>
+    <div class="pain-item"><span class="icon">✗</span><span>You applied for funding and got denied — and nobody told you why.</span></div>
+    <div class="pain-item"><span class="icon">✗</span><span>You used your home address, your Gmail, and your personal phone — because nobody told you not to.</span></div>
+    <div class="pain-item"><span class="icon">✗</span><span>You feel like you're doing everything right — but nothing is working.</span></div>
+    <p class="pain-bold">You're not doing it wrong because you're not smart enough. You're doing it wrong because nobody showed you the right order.</p>
+  </div>
+
+  <!-- BENEFITS -->
+  <div class="benefits-section">
+    <p class="benefits-label">Download the free guide and discover:</p>
+    <div class="benefit-item"><span class="chk">✓</span><p>The <strong>exact ORDER</strong> to set up your LLC — before you file a single form</p></div>
+    <div class="benefit-item"><span class="chk">✓</span><p>Why <strong>82% of LLC funding denials</strong> have nothing to do with your credit score</p></div>
+    <div class="benefit-item"><span class="chk">✓</span><p>The <strong>6 structural mistakes</strong> that block approvals — and how to fix every one</p></div>
+    <div class="benefit-item"><span class="chk">✓</span><p>The <strong>30-day roadmap</strong> from idea to fully funded, bank-approved LLC</p></div>
+    <div class="benefit-item"><span class="chk">✓</span><p>The <strong>funding readiness checklist</strong> banks wish you already knew about</p></div>
+  </div>
+</div>
+
+<!-- OPT-IN FORM -->
+<div style="padding:0 24px;">
+  <div class="form-box">
+    <h2>Yes — Send Me the Free 30-Day Roadmap!</h2>
+    <p>Instant access. No spam. Unsubscribe anytime.</p>
+    <!-- GHL: Replace inputs below with your GHL form embed -->
+    <input class="form-field" type="text" placeholder="First Name" name="first_name">
+    <input class="form-field" type="email" placeholder="Email Address" name="email">
+    <button class="cta-btn">→ SEND ME THE FREE GUIDE NOW</button>
+    <p class="form-fine">By submitting, you agree to receive emails from Joss Consulting Group. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- CREDIBILITY -->
+<section class="cred-section">
+  <div class="cred-inner">
+    <div class="cred-bio">
+      <h3>Meet Your Guide</h3>
+      <p>Hi, I'm Yoldine Joscirin — MBA in Business & Organizational Leadership, founder of Joss Consulting Group, and a business strategist who has helped hundreds of women go from confused and stuck to structured, funded, and growing.</p>
+      <p>I built this guide because I was tired of watching smart, driven women get denied for funding they deserved — just because nobody showed them the right way to set up.</p>
+      <p>The system isn't rigged against you. It just requires you to know the rules.</p>
+      <div class="quote">"Finally… someone who explains this in a way I actually understand." — Student review</div>
+    </div>
+    <div class="cred-list">
+      <h4>Yoldine Joscirin, MBA</h4>
+      <div class="cred-item"><span class="dot">✓</span><span>MBA in Business & Organizational Leadership</span></div>
+      <div class="cred-item"><span class="dot">✓</span><span>Founder, Joss Consulting Group</span></div>
+      <div class="cred-item"><span class="dot">✓</span><span>Business strategist & compliance specialist</span></div>
+      <div class="cred-item"><span class="dot">✓</span><span>Helped hundreds of women build bank-approved LLCs</span></div>
+      <div class="cred-item"><span class="dot">✓</span><span>Simple, clear, mentor-style teaching</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="page-footer">
+  © Joss Consulting Group &nbsp;|&nbsp; jossconsultinggroup.com &nbsp;|&nbsp; @jossonbusiness
+</div>
+
+</body>
+</html>
