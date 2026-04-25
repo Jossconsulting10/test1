@@ -4,7 +4,7 @@
 <base target="_top">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JOSS Consulting Group — CEO Tracker</title>
+<title>JOSS Consulting Group — CEO Tracker Mobile</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -521,6 +521,415 @@
     .clock-time { font-size: 38px; }
     .app { padding: 14px 12px 80px; }
   }
+
+/* ─────────────────────────────────────────────
+   MOBILE-FIRST UPGRADE — JOSS CEO TRACKER
+   Better phone layout, bigger touch targets,
+   sticky tabs, cleaner cards, no horizontal overflow
+───────────────────────────────────────────── */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+.app {
+  width: 100%;
+  max-width: 100%;
+  padding: 12px 10px 90px;
+}
+
+.topbar {
+  border-radius: 18px;
+  padding: 16px;
+  align-items: flex-start;
+}
+
+.brand-name {
+  font-size: 24px;
+  line-height: 1.05;
+}
+
+.brand-cities {
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+.top-rev {
+  width: 100%;
+  text-align: left;
+  padding: 10px 14px;
+}
+
+.top-rev-val {
+  font-size: 28px;
+}
+
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  margin: 12px -2px 16px;
+  border-radius: 14px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  box-shadow: 0 8px 24px rgba(20,20,20,0.06);
+}
+
+.tab {
+  min-height: 44px;
+  padding: 11px 14px;
+  font-size: 12px;
+  scroll-snap-align: start;
+}
+
+.sec-title {
+  font-size: 28px;
+  line-height: 1.05;
+}
+
+.sec-sub {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.card {
+  padding: 16px;
+  border-radius: 18px;
+}
+
+.g2, .g3, .g4, .form-grid {
+  grid-template-columns: 1fr !important;
+  gap: 10px;
+}
+
+.kpi {
+  padding: 16px;
+  border-radius: 18px;
+}
+
+.kpi-val {
+  font-size: 36px;
+}
+
+.clock-hero {
+  padding: 20px 16px;
+  border-radius: 18px;
+}
+
+.clock-time {
+  font-size: 46px;
+  letter-spacing: -1px;
+}
+
+.clock-btns {
+  width: 100%;
+}
+
+.clock-btns .btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.btn {
+  min-height: 44px;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.btn-lg {
+  width: 100%;
+  padding: 14px 18px;
+}
+
+.inp {
+  min-height: 44px;
+  font-size: 16px; /* prevents iPhone zoom */
+  border-radius: 12px;
+}
+
+textarea.inp {
+  min-height: 96px;
+}
+
+.lbl {
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.stat {
+  border-radius: 18px;
+  padding: 16px 12px;
+}
+
+.stat-val {
+  font-size: 42px;
+}
+
+.stat-btns {
+  gap: 10px;
+}
+
+.adj {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  font-size: 22px;
+}
+
+.offer {
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.offer-price {
+  font-size: 30px;
+}
+
+.offer-name {
+  font-size: 13px;
+}
+
+.task-group-head {
+  border-radius: 14px 14px 0 0;
+  padding: 10px 14px;
+  font-size: 11px;
+}
+
+.task-row {
+  padding: 14px;
+  gap: 12px;
+  min-height: 52px;
+}
+
+.chkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.task-text {
+  font-size: 14px;
+}
+
+.priority {
+  font-size: 9px;
+  padding: 4px 8px;
+}
+
+.add-form-wrap {
+  padding: 16px;
+  border-radius: 18px;
+}
+
+.crm-scroll {
+  border: none;
+  overflow-x: visible;
+}
+
+.crm-scroll table,
+.crm-scroll thead,
+.crm-scroll tbody,
+.crm-scroll th,
+.crm-scroll td,
+.crm-scroll tr {
+  display: block;
+  min-width: 0 !important;
+  width: 100%;
+}
+
+.crm-scroll thead {
+  display: none;
+}
+
+.crm-scroll tr {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.crm-scroll td {
+  border-bottom: 1px solid var(--rule);
+  padding: 9px 0;
+  max-width: none !important;
+  white-space: normal !important;
+}
+
+.crm-scroll td:last-child {
+  border-bottom: none;
+}
+
+.crm-scroll td::before {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 2px;
+}
+
+.crm-scroll td:nth-child(1)::before { content: "Client"; }
+.crm-scroll td:nth-child(2)::before { content: "Email"; }
+.crm-scroll td:nth-child(3)::before { content: "Business"; }
+.crm-scroll td:nth-child(4)::before { content: "State"; }
+.crm-scroll td:nth-child(5)::before { content: "Service"; }
+.crm-scroll td:nth-child(6)::before { content: "Paid"; }
+.crm-scroll td:nth-child(7)::before { content: "Status"; }
+.crm-scroll td:nth-child(8)::before { content: "Follow-up"; }
+.crm-scroll td:nth-child(9)::before { content: "Source"; }
+.crm-scroll td:nth-child(10)::before { content: "Notes"; }
+.crm-scroll td:nth-child(11)::before { content: "Action"; }
+
+.review-block {
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.review-head {
+  font-size: 22px;
+}
+
+.modal-backdrop {
+  align-items: flex-end;
+  padding: 0;
+}
+
+.modal-box {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 22px 22px 0 0;
+  padding: 22px 16px;
+}
+
+.modal-row {
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.modal-lbl {
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.modal-btns {
+  flex-direction: column;
+}
+
+#toast {
+  width: calc(100% - 28px);
+  text-align: center;
+  white-space: normal;
+  bottom: 14px;
+}
+
+/* Larger screens still look like the original design */
+@media (min-width: 760px) {
+  .app {
+    max-width: 860px;
+    padding: 20px 16px 80px;
+  }
+
+  .topbar {
+    align-items: center;
+  }
+
+  .top-rev {
+    width: auto;
+    text-align: right;
+  }
+
+  .g2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .g3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  .g4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .btn-lg {
+    width: auto;
+  }
+
+  .clock-btns {
+    width: auto;
+  }
+
+  .crm-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+  }
+
+  .crm-scroll table {
+    display: table;
+    min-width: 580px !important;
+  }
+
+  .crm-scroll thead {
+    display: table-header-group;
+  }
+
+  .crm-scroll tbody {
+    display: table-row-group;
+  }
+
+  .crm-scroll tr {
+    display: table-row;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+  }
+
+  .crm-scroll th,
+  .crm-scroll td {
+    display: table-cell;
+    width: auto;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .crm-scroll td::before {
+    content: none !important;
+  }
+
+  .modal-backdrop {
+    align-items: center;
+    padding: 20px;
+  }
+
+  .modal-box {
+    max-width: 440px;
+    border-radius: var(--r-lg);
+    padding: 28px;
+  }
+
+  .modal-btns {
+    flex-direction: row;
+  }
+
+  #toast {
+    width: auto;
+    white-space: nowrap;
+    bottom: 24px;
+  }
+}
+
 </style>
 </head>
 <body>
