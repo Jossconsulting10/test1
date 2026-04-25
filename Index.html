@@ -521,6 +521,98 @@
     .clock-time { font-size: 38px; }
     .app { padding: 14px 12px 80px; }
   }
+
+/* ─────────────────────────────────────────────
+   LEFT SIDE NAV + PERIOD DASHBOARDS
+   Keeps original JOSS design, adds sidebar tabs
+───────────────────────────────────────────── */
+.shell {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.side-tabs {
+  position: sticky;
+  top: 16px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--r-lg);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.side-tab {
+  width: 100%;
+  text-align: left;
+  padding: 11px 13px;
+  border-radius: var(--r);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mid);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.side-tab:hover {
+  color: var(--black);
+  background: var(--bg);
+  border-color: var(--rule);
+}
+
+.side-tab.on {
+  background: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+  box-shadow: 0 8px 18px rgba(20,20,20,0.12);
+}
+
+.side-tab.accent {
+  border-left: 4px solid var(--coral);
+}
+
+.side-tab.accent.on {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: var(--white);
+}
+
+.main-content {
+  min-width: 0;
+}
+
+.period-note {
+  font-size: 11px;
+  color: var(--soft);
+  margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    display: block;
+  }
+
+  .side-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    flex-direction: row;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .side-tab {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    text-align: center;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -538,22 +630,27 @@
     </div>
   </div>
 
-  <!-- TABS -->
-  <div class="tabs">
-    <button class="tab on"  onclick="showTab('dashboard',this)">Dashboard</button>
-    <button class="tab"     onclick="showTab('clock',this)">Clock In/Out</button>
-    <button class="tab"     onclick="showTab('tasks',this)">Tasks</button>
-    <button class="tab"     onclick="showTab('sales',this)">Log Sale</button>
-    <button class="tab"     onclick="showTab('crm',this)">Client CRM</button>
-    <button class="tab"     onclick="showTab('review',this)">Weekly Review</button>
-    <button class="tab"     onclick="showTab('goals',this)">Goals</button>
-    <button class="tab"     onclick="showTab('expenses',this)">Expenses</button>
-    <button class="tab"     onclick="showTab('pipeline',this)">Pipeline</button>
-    <button class="tab"     onclick="showTab('content',this)">Content</button>
-    <button class="tab"     onclick="showTab('monthly',this)">Monthly</button>
-  </div>
+  <div class="shell">
+    <!-- LEFT SIDE TABS -->
+    <div class="side-tabs">
+      <button class="side-tab on" onclick="showTab('dashboard',this)">Dashboard</button>
+      <button class="side-tab accent" onclick="showTab('weekdash',this)">Weekly Dashboard</button>
+      <button class="side-tab accent" onclick="showTab('monthdash',this)">Monthly Dashboard</button>
+      <button class="side-tab accent" onclick="showTab('yeardash',this)">Yearly Dashboard</button>
+      <button class="side-tab" onclick="showTab('clock',this)">Clock In/Out</button>
+      <button class="side-tab" onclick="showTab('tasks',this)">Tasks</button>
+      <button class="side-tab" onclick="showTab('sales',this)">Log Sale</button>
+      <button class="side-tab" onclick="showTab('crm',this)">Client CRM</button>
+      <button class="side-tab" onclick="showTab('review',this)">Weekly Review</button>
+      <button class="side-tab" onclick="showTab('goals',this)">Goals</button>
+      <button class="side-tab" onclick="showTab('expenses',this)">Expenses</button>
+      <button class="side-tab" onclick="showTab('pipeline',this)">Pipeline</button>
+      <button class="side-tab" onclick="showTab('content',this)">Content</button>
+      <button class="side-tab" onclick="showTab('monthly',this)">Monthly Review</button>
+    </div>
 
-  <!-- ═══════════════════════════════════════ DASHBOARD ══ -->
+    <div class="main-content">
+<!-- ═══════════════════════════════════════ DASHBOARD ══ -->
   <div class="panel on" id="panel-dashboard">
     <div class="sec-head">
       <div class="sec-title">Good day — let's build ✦</div>
@@ -593,6 +690,98 @@
       <div class="prog-wrap"><div class="prog-fill" id="dTaskBar" style="width:0%"></div></div>
     </div>
   </div>
+
+
+  <!-- ═══════════════════════════════════════ WEEKLY DASHBOARD ══ -->
+  <div class="panel" id="panel-weekdash">
+    <div class="sec-head">
+      <div class="sec-title">Weekly Dashboard</div>
+      <div class="sec-sub">See this week’s revenue, sales, clients, tasks checked, and daily summaries.</div>
+      <div class="period-note" id="weekRangeText"></div>
+    </div>
+
+    <div class="g4" style="margin-bottom:16px">
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral)"></div><div class="kpi-lbl">Week Revenue</div><div class="kpi-val" id="weekRevenue">$0</div><div class="kpi-sub">Current week</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--sage)"></div><div class="kpi-lbl">Week Sales</div><div class="kpi-val" id="weekSales">0</div><div class="kpi-sub">Closed sales</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--black)"></div><div class="kpi-lbl">Week Clients</div><div class="kpi-val" id="weekClients">0</div><div class="kpi-sub">New clients</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral-l)"></div><div class="kpi-lbl">Tasks Checked</div><div class="kpi-val" id="weekTasks">0</div><div class="kpi-sub">Actions completed</div></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">Weekly Activity</div>
+        <div class="dash-row"><span class="dash-row-lbl">Reels Created</span><span class="dash-row-val" id="weekReels">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">DMs Sent</span><span class="dash-row-val" id="weekDMs">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">Follow-Ups</span><span class="dash-row-val" id="weekFollowUps">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">New Leads</span><span class="dash-row-val" id="weekLeads">0</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Daily Summaries This Week</div>
+        <div id="weekSummaryLog"><div style="color:var(--soft);font-size:12px;padding:8px 0;text-align:center">No daily summaries saved yet</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MONTHLY DASHBOARD ══ -->
+  <div class="panel" id="panel-monthdash">
+    <div class="sec-head">
+      <div class="sec-title">Monthly Dashboard</div>
+      <div class="sec-sub">See this month’s revenue, sales, clients, tasks checked, and daily summaries.</div>
+      <div class="period-note" id="monthRangeText"></div>
+    </div>
+
+    <div class="g4" style="margin-bottom:16px">
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral)"></div><div class="kpi-lbl">Month Revenue</div><div class="kpi-val" id="monthRevenue">$0</div><div class="kpi-sub">Current month</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--sage)"></div><div class="kpi-lbl">Month Sales</div><div class="kpi-val" id="monthSales">0</div><div class="kpi-sub">Closed sales</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--black)"></div><div class="kpi-lbl">Month Clients</div><div class="kpi-val" id="monthClients">0</div><div class="kpi-sub">New clients</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral-l)"></div><div class="kpi-lbl">Tasks Checked</div><div class="kpi-val" id="monthTasks">0</div><div class="kpi-sub">Actions completed</div></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">Monthly Activity</div>
+        <div class="dash-row"><span class="dash-row-lbl">Reels Created</span><span class="dash-row-val" id="monthReels">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">DMs Sent</span><span class="dash-row-val" id="monthDMs">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">Follow-Ups</span><span class="dash-row-val" id="monthFollowUps">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">New Leads</span><span class="dash-row-val" id="monthLeads">0</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Daily Summaries This Month</div>
+        <div id="monthSummaryLog"><div style="color:var(--soft);font-size:12px;padding:8px 0;text-align:center">No daily summaries saved yet</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ YEARLY DASHBOARD ══ -->
+  <div class="panel" id="panel-yeardash">
+    <div class="sec-head">
+      <div class="sec-title">Yearly Dashboard</div>
+      <div class="sec-sub">See this year’s revenue, sales, clients, tasks checked, and daily summaries.</div>
+      <div class="period-note" id="yearRangeText"></div>
+    </div>
+
+    <div class="g4" style="margin-bottom:16px">
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral)"></div><div class="kpi-lbl">Year Revenue</div><div class="kpi-val" id="yearRevenue">$0</div><div class="kpi-sub">Current year</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--sage)"></div><div class="kpi-lbl">Year Sales</div><div class="kpi-val" id="yearSales">0</div><div class="kpi-sub">Closed sales</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--black)"></div><div class="kpi-lbl">Year Clients</div><div class="kpi-val" id="yearClients">0</div><div class="kpi-sub">New clients</div></div>
+      <div class="kpi"><div class="kpi-stripe" style="background:var(--coral-l)"></div><div class="kpi-lbl">Tasks Checked</div><div class="kpi-val" id="yearTasks">0</div><div class="kpi-sub">Actions completed</div></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">Yearly Activity</div>
+        <div class="dash-row"><span class="dash-row-lbl">Reels Created</span><span class="dash-row-val" id="yearReels">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">DMs Sent</span><span class="dash-row-val" id="yearDMs">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">Follow-Ups</span><span class="dash-row-val" id="yearFollowUps">0</span></div>
+        <div class="dash-row"><span class="dash-row-lbl">New Leads</span><span class="dash-row-val" id="yearLeads">0</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Daily Summaries This Year</div>
+        <div id="yearSummaryLog"><div style="color:var(--soft);font-size:12px;padding:8px 0;text-align:center">No daily summaries saved yet</div></div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- ═══════════════════════════════════════ CLOCK ══ -->
   <div class="panel" id="panel-clock">
@@ -943,6 +1132,10 @@
   </div>
 
 
+    <!-- main-content-end-marker -->
+    </div>
+  </div>
+
 </div>
 
 <!-- MODAL -->
@@ -1011,6 +1204,128 @@ var S = {
   energy: 7, clients: [], tasks: [], log: [],
   timerInt: null
 };
+
+// ── PERIOD DASHBOARD STATE: WEEK / MONTH / YEAR ─────────────────────────────
+var PERIOD_STORAGE_KEY = "joss_period_dashboard_data_v1";
+
+var P = {
+  weekKey: getWeekKey(),
+  monthKey: getMonthKey(),
+  yearKey: getYearKey(),
+  week: blankPeriod(),
+  month: blankPeriod(),
+  year: blankPeriod()
+};
+
+function blankPeriod() {
+  return {
+    revenue: 0,
+    sales: 0,
+    clients: 0,
+    tasks: 0,
+    reels: 0,
+    dms: 0,
+    fu: 0,
+    leads: 0,
+    summaries: []
+  };
+}
+
+function getWeekKey() {
+  var d = new Date();
+  var day = d.getDay();
+  var diff = d.getDate() - day;
+  var weekStart = new Date(d.setDate(diff));
+  return weekStart.toISOString().split("T")[0];
+}
+
+function getMonthKey() {
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+}
+
+function getYearKey() {
+  return String(new Date().getFullYear());
+}
+
+function loadPeriodData() {
+  try {
+    var raw = localStorage.getItem(PERIOD_STORAGE_KEY);
+    if (raw) P = JSON.parse(raw);
+  } catch(e) {}
+
+  var wk = getWeekKey(), mo = getMonthKey(), yr = getYearKey();
+
+  if (P.weekKey !== wk) { P.weekKey = wk; P.week = blankPeriod(); }
+  if (P.monthKey !== mo) { P.monthKey = mo; P.month = blankPeriod(); }
+  if (P.yearKey !== yr) { P.yearKey = yr; P.year = blankPeriod(); }
+
+  savePeriodData();
+}
+
+function savePeriodData() {
+  try {
+    localStorage.setItem(PERIOD_STORAGE_KEY, JSON.stringify(P));
+  } catch(e) {}
+}
+
+function addToPeriod(key, amount) {
+  P.week[key] += amount;
+  P.month[key] += amount;
+  P.year[key] += amount;
+  savePeriodData();
+  updatePeriodDashboards();
+}
+
+function addDailySummaryToPeriods(summary) {
+  P.week.summaries.push(summary);
+  P.month.summaries.push(summary);
+  P.year.summaries.push(summary);
+  savePeriodData();
+  updatePeriodDashboards();
+}
+
+function updatePeriodDashboards() {
+  renderPeriod("week", P.week);
+  renderPeriod("month", P.month);
+  renderPeriod("year", P.year);
+
+  if ($("weekRangeText")) $("weekRangeText").textContent = "Week starting: " + P.weekKey;
+  if ($("monthRangeText")) $("monthRangeText").textContent = "Month: " + P.monthKey;
+  if ($("yearRangeText")) $("yearRangeText").textContent = "Year: " + P.yearKey;
+}
+
+function renderPeriod(prefix, data) {
+  if (!$(prefix + "Revenue")) return;
+
+  $(prefix + "Revenue").textContent = fmtMoney(data.revenue || 0);
+  $(prefix + "Sales").textContent = data.sales || 0;
+  $(prefix + "Clients").textContent = data.clients || 0;
+  $(prefix + "Tasks").textContent = data.tasks || 0;
+  $(prefix + "Reels").textContent = data.reels || 0;
+  $(prefix + "DMs").textContent = data.dms || 0;
+  $(prefix + "FollowUps").textContent = data.fu || 0;
+  $(prefix + "Leads").textContent = data.leads || 0;
+
+  var logEl = $(prefix + "SummaryLog");
+  if (!logEl) return;
+
+  if (!data.summaries || !data.summaries.length) {
+    logEl.innerHTML = '<div style="color:var(--soft);font-size:12px;padding:8px 0;text-align:center">No daily summaries saved yet</div>';
+    return;
+  }
+
+  var html = "";
+  for (var i = data.summaries.length - 1; i >= 0; i--) {
+    var s = data.summaries[i];
+    html += '<div class="log-item"><div class="log-dot dot-sale"></div><div>';
+    html += '<div class="log-txt"><strong>' + s.date + '</strong> — ' + s.revenue + ' · ' + s.sales + ' sale(s)</div>';
+    html += '<div class="log-time">Reels: ' + s.reels + ' · DMs: ' + s.dms + ' · Follow-ups: ' + s.fu + ' · Leads: ' + s.leads + '</div>';
+    html += '</div></div>';
+  }
+  logEl.innerHTML = html;
+}
+
 
 var OFFERS = [
   { name: "Free Lead Magnet",     price: 0,   tag: "free",     tagLabel: "Lead Gen" },
@@ -1095,7 +1410,7 @@ tickClock();
 function showTab(name, btn) {
   var panels = document.querySelectorAll(".panel");
   for (var i = 0; i < panels.length; i++) panels[i].classList.remove("on");
-  var tabs = document.querySelectorAll(".tab");
+  var tabs = document.querySelectorAll(".tab, .side-tab");
   for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove("on");
   $("panel-" + name).classList.add("on");
   if (btn) btn.classList.add("on");
@@ -1198,6 +1513,8 @@ function logCustomSale() {
 function recordSale(name, price, client) {
   S.sales.push({ name: name, price: price, client: client, time: new Date() });
   S.revenue += price;
+  addToPeriod("revenue", price);
+  addToPeriod("sales", 1);
   $("topRev").textContent = fmtMoney(S.revenue);
   $("salesRevBig").textContent = fmtMoney(S.revenue);
   renderSalesLog();
@@ -1274,6 +1591,7 @@ function renderTasks() {
 
 function toggleTask(i) {
   S.tasks[i].done = !S.tasks[i].done;
+  if (S.tasks[i].done) addToPeriod("tasks", 1);
 
   var task = S.tasks[i];
 
@@ -1346,6 +1664,7 @@ function saveClient() {
     added:     new Date()
   };
   S.clients.unshift(client);
+  addToPeriod("clients", 1);
 
   // ── POST TO GOOGLE SHEETS ──
   postToSheets('Clients', {
@@ -1695,9 +2014,11 @@ function setDefaultDates() {
 // ── INIT ─────────────────────────────────────────────────────────────────────
 buildOffers();
 initTasks();
+loadPeriodData();
 buildReview();
 renderCRM();
 updateDashboard();
+updatePeriodDashboards();
 setEnergy(7);
 setDefaultDates();
 </script>
