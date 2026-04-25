@@ -1,10 +1,7 @@
-// JOSS CONSULTING GROUP — CEO TRACKER BACKEND
-// Use this full code in Code.gs
-
 function doGet() {
   return HtmlService
     .createHtmlOutputFromFile("Index")
-    .setTitle("JOSS Consulting Group — CEO Tracker")
+    .setTitle("JOSS CEO Tracker")
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
@@ -12,27 +9,47 @@ function setupSheets() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
 
   createSheet_(ss, "Clients", [
-    "Timestamp", "Full Name", "Email", "Phone / Handle", "Business Name",
-    "Business Type", "State", "Business Address", "Service", "Amount Paid",
-    "Status", "Follow-Up Date", "Source", "Notes", "Internal Notes"
+    "Timestamp","Full Name","Email","Phone / Handle","Business Name",
+    "Business Type","State","Business Address","Service","Amount Paid",
+    "Status","Follow-Up Date","Source","Notes","Internal Notes"
   ]);
 
   createSheet_(ss, "Sales Tracker", [
-    "Timestamp", "Offer", "Price", "Client", "Date"
+    "Timestamp","Offer","Price","Client","Date"
   ]);
 
   createSheet_(ss, "Daily Tracker", [
-    "Timestamp", "Business", "Date", "Clock In", "Clock Out", "Hours Worked",
-    "Reels Created", "DMs Sent", "Follow-Ups", "New Leads", "Sales Closed",
-    "Revenue", "Energy Level", "Notes", "Sales Detail"
+    "Timestamp","Business","Date","Clock In","Clock Out","Hours Worked",
+    "Reels Created","DMs Sent","Follow-Ups","New Leads","Sales Closed",
+    "Revenue","Energy Level","Notes","Sales Detail"
   ]);
 
   createSheet_(ss, "Tasks", [
-    "Timestamp", "Task", "Group", "Priority", "Status", "Action"
+    "Timestamp","Task","Group","Priority","Status","Action"
   ]);
 
   createSheet_(ss, "Weekly Review", [
-    "Timestamp", "Section", "Question", "Answer"
+    "Timestamp","Section","Question","Answer"
+  ]);
+
+  createSheet_(ss, "Business Goals", [
+    "Timestamp","Goal Type","Goal Name","Target Amount","Current Amount","Deadline","Status","Notes"
+  ]);
+
+  createSheet_(ss, "Expenses", [
+    "Timestamp","Date","Category","Vendor","Description","Amount","Payment Method","Notes"
+  ]);
+
+  createSheet_(ss, "Lead Pipeline", [
+    "Timestamp","Full Name","Contact","Source","Interest","Stage","Follow-Up Date","Notes"
+  ]);
+
+  createSheet_(ss, "Content Tracker", [
+    "Timestamp","Date","Platform","Content Type","Topic","CTA","Status","Views","Leads","Sales","Notes"
+  ]);
+
+  createSheet_(ss, "Monthly Review", [
+    "Timestamp","Month","Revenue","Expenses","Profit","Best Offer","Best Platform","Biggest Lesson","Next Month Focus"
   ]);
 
   return "SETUP COMPLETE";
@@ -49,43 +66,9 @@ function saveToSheet(data) {
 
     return appendToSheet_(sheetName, data);
 
-  } catch (err) {
-    return "ERROR: " + err.message;
+  } catch (error) {
+    return "ERROR: " + error.message;
   }
-}
-
-function saveTaskToSheet(taskData) {
-  return appendToSheet_("Tasks", {
-    "Timestamp": new Date(),
-    "Task": taskData.task || "",
-    "Group": taskData.group || "",
-    "Priority": taskData.priority || "",
-    "Status": taskData.status || "",
-    "Action": taskData.action || ""
-  });
-}
-
-function saveWeeklyReviewToSheet(reviewData) {
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName("Weekly Review");
-
-  if (!sheet) {
-    sheet = ss.insertSheet("Weekly Review");
-    sheet.appendRow(["Timestamp", "Section", "Question", "Answer"]);
-    styleHeader_(sheet, 4);
-  }
-
-  reviewData.forEach(function(item) {
-    sheet.appendRow([
-      new Date(),
-      item.section || "",
-      item.question || "",
-      item.answer || ""
-    ]);
-  });
-
-  SpreadsheetApp.flush();
-  return "WEEKLY REVIEW SAVED";
 }
 
 function appendToSheet_(sheetName, data) {
@@ -133,7 +116,7 @@ function createSheet_(ss, name, headers) {
     sheet = ss.insertSheet(name);
   }
 
-  if (sheet.getLastRow() === 0) {
+  if (sheet.getLastRow() === 0 || sheet.getLastColumn() === 0) {
     sheet.appendRow(headers);
     styleHeader_(sheet, headers.length);
   }
@@ -155,17 +138,17 @@ function testSaveClient() {
     "Timestamp": new Date(),
     "Full Name": "Test Client",
     "Email": "test@email.com",
-    "Phone / Handle": "555-000-0000",
-    "Business Name": "Test Business LLC",
+    "Phone / Handle": "123456",
+    "Business Name": "Test LLC",
     "Business Type": "LLC",
-    "State": "Florida",
+    "State": "FL",
     "Business Address": "Test Address",
     "Service": "Test Service",
     "Amount Paid": "1",
     "Status": "Lead",
     "Follow-Up Date": "",
     "Source": "Test",
-    "Notes": "This is a test row.",
-    "Internal Notes": "Testing backend."
+    "Notes": "Test row",
+    "Internal Notes": "Backend working"
   });
 }

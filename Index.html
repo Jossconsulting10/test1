@@ -4,7 +4,7 @@
 <base target="_top">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JOSS Consulting Group — CEO Tracker Mobile</title>
+<title>JOSS Consulting Group — CEO Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -521,415 +521,6 @@
     .clock-time { font-size: 38px; }
     .app { padding: 14px 12px 80px; }
   }
-
-/* ─────────────────────────────────────────────
-   MOBILE-FIRST UPGRADE — JOSS CEO TRACKER
-   Better phone layout, bigger touch targets,
-   sticky tabs, cleaner cards, no horizontal overflow
-───────────────────────────────────────────── */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
-body {
-  -webkit-text-size-adjust: 100%;
-}
-
-.app {
-  width: 100%;
-  max-width: 100%;
-  padding: 12px 10px 90px;
-}
-
-.topbar {
-  border-radius: 18px;
-  padding: 16px;
-  align-items: flex-start;
-}
-
-.brand-name {
-  font-size: 24px;
-  line-height: 1.05;
-}
-
-.brand-cities {
-  font-size: 9px;
-  margin-top: 4px;
-}
-
-.top-rev {
-  width: 100%;
-  text-align: left;
-  padding: 10px 14px;
-}
-
-.top-rev-val {
-  font-size: 28px;
-}
-
-.tabs {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  margin: 12px -2px 16px;
-  border-radius: 14px;
-  overflow-x: auto;
-  scroll-snap-type: x proximity;
-  box-shadow: 0 8px 24px rgba(20,20,20,0.06);
-}
-
-.tab {
-  min-height: 44px;
-  padding: 11px 14px;
-  font-size: 12px;
-  scroll-snap-align: start;
-}
-
-.sec-title {
-  font-size: 28px;
-  line-height: 1.05;
-}
-
-.sec-sub {
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.card {
-  padding: 16px;
-  border-radius: 18px;
-}
-
-.g2, .g3, .g4, .form-grid {
-  grid-template-columns: 1fr !important;
-  gap: 10px;
-}
-
-.kpi {
-  padding: 16px;
-  border-radius: 18px;
-}
-
-.kpi-val {
-  font-size: 36px;
-}
-
-.clock-hero {
-  padding: 20px 16px;
-  border-radius: 18px;
-}
-
-.clock-time {
-  font-size: 46px;
-  letter-spacing: -1px;
-}
-
-.clock-btns {
-  width: 100%;
-}
-
-.clock-btns .btn {
-  flex: 1;
-  justify-content: center;
-}
-
-.btn {
-  min-height: 44px;
-  justify-content: center;
-  border-radius: 12px;
-  font-size: 12px;
-}
-
-.btn-lg {
-  width: 100%;
-  padding: 14px 18px;
-}
-
-.inp {
-  min-height: 44px;
-  font-size: 16px; /* prevents iPhone zoom */
-  border-radius: 12px;
-}
-
-textarea.inp {
-  min-height: 96px;
-}
-
-.lbl {
-  font-size: 10px;
-  margin-top: 10px;
-}
-
-.stat {
-  border-radius: 18px;
-  padding: 16px 12px;
-}
-
-.stat-val {
-  font-size: 42px;
-}
-
-.stat-btns {
-  gap: 10px;
-}
-
-.adj {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  font-size: 22px;
-}
-
-.offer {
-  border-radius: 18px;
-  padding: 16px;
-}
-
-.offer-price {
-  font-size: 30px;
-}
-
-.offer-name {
-  font-size: 13px;
-}
-
-.task-group-head {
-  border-radius: 14px 14px 0 0;
-  padding: 10px 14px;
-  font-size: 11px;
-}
-
-.task-row {
-  padding: 14px;
-  gap: 12px;
-  min-height: 52px;
-}
-
-.chkbox {
-  width: 24px;
-  height: 24px;
-  border-radius: 8px;
-  font-size: 13px;
-}
-
-.task-text {
-  font-size: 14px;
-}
-
-.priority {
-  font-size: 9px;
-  padding: 4px 8px;
-}
-
-.add-form-wrap {
-  padding: 16px;
-  border-radius: 18px;
-}
-
-.crm-scroll {
-  border: none;
-  overflow-x: visible;
-}
-
-.crm-scroll table,
-.crm-scroll thead,
-.crm-scroll tbody,
-.crm-scroll th,
-.crm-scroll td,
-.crm-scroll tr {
-  display: block;
-  min-width: 0 !important;
-  width: 100%;
-}
-
-.crm-scroll thead {
-  display: none;
-}
-
-.crm-scroll tr {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: 18px;
-  padding: 12px;
-  margin-bottom: 12px;
-}
-
-.crm-scroll td {
-  border-bottom: 1px solid var(--rule);
-  padding: 9px 0;
-  max-width: none !important;
-  white-space: normal !important;
-}
-
-.crm-scroll td:last-child {
-  border-bottom: none;
-}
-
-.crm-scroll td::before {
-  display: block;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--soft);
-  margin-bottom: 2px;
-}
-
-.crm-scroll td:nth-child(1)::before { content: "Client"; }
-.crm-scroll td:nth-child(2)::before { content: "Email"; }
-.crm-scroll td:nth-child(3)::before { content: "Business"; }
-.crm-scroll td:nth-child(4)::before { content: "State"; }
-.crm-scroll td:nth-child(5)::before { content: "Service"; }
-.crm-scroll td:nth-child(6)::before { content: "Paid"; }
-.crm-scroll td:nth-child(7)::before { content: "Status"; }
-.crm-scroll td:nth-child(8)::before { content: "Follow-up"; }
-.crm-scroll td:nth-child(9)::before { content: "Source"; }
-.crm-scroll td:nth-child(10)::before { content: "Notes"; }
-.crm-scroll td:nth-child(11)::before { content: "Action"; }
-
-.review-block {
-  border-radius: 18px;
-  padding: 16px;
-}
-
-.review-head {
-  font-size: 22px;
-}
-
-.modal-backdrop {
-  align-items: flex-end;
-  padding: 0;
-}
-
-.modal-box {
-  max-width: 100%;
-  width: 100%;
-  border-radius: 22px 22px 0 0;
-  padding: 22px 16px;
-}
-
-.modal-row {
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.modal-lbl {
-  min-width: 110px;
-  flex-shrink: 0;
-}
-
-.modal-btns {
-  flex-direction: column;
-}
-
-#toast {
-  width: calc(100% - 28px);
-  text-align: center;
-  white-space: normal;
-  bottom: 14px;
-}
-
-/* Larger screens still look like the original design */
-@media (min-width: 760px) {
-  .app {
-    max-width: 860px;
-    padding: 20px 16px 80px;
-  }
-
-  .topbar {
-    align-items: center;
-  }
-
-  .top-rev {
-    width: auto;
-    text-align: right;
-  }
-
-  .g2 {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .g3 {
-    grid-template-columns: repeat(3, 1fr) !important;
-  }
-
-  .g4 {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .btn-lg {
-    width: auto;
-  }
-
-  .clock-btns {
-    width: auto;
-  }
-
-  .crm-scroll {
-    overflow-x: auto;
-    border: 1px solid var(--rule);
-  }
-
-  .crm-scroll table {
-    display: table;
-    min-width: 580px !important;
-  }
-
-  .crm-scroll thead {
-    display: table-header-group;
-  }
-
-  .crm-scroll tbody {
-    display: table-row-group;
-  }
-
-  .crm-scroll tr {
-    display: table-row;
-    padding: 0;
-    margin: 0;
-    border: none;
-    border-radius: 0;
-  }
-
-  .crm-scroll th,
-  .crm-scroll td {
-    display: table-cell;
-    width: auto;
-    padding: 10px 14px;
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .crm-scroll td::before {
-    content: none !important;
-  }
-
-  .modal-backdrop {
-    align-items: center;
-    padding: 20px;
-  }
-
-  .modal-box {
-    max-width: 440px;
-    border-radius: var(--r-lg);
-    padding: 28px;
-  }
-
-  .modal-btns {
-    flex-direction: row;
-  }
-
-  #toast {
-    width: auto;
-    white-space: nowrap;
-    bottom: 24px;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -955,6 +546,11 @@ textarea.inp {
     <button class="tab"     onclick="showTab('sales',this)">Log Sale</button>
     <button class="tab"     onclick="showTab('crm',this)">Client CRM</button>
     <button class="tab"     onclick="showTab('review',this)">Weekly Review</button>
+    <button class="tab"     onclick="showTab('goals',this)">Goals</button>
+    <button class="tab"     onclick="showTab('expenses',this)">Expenses</button>
+    <button class="tab"     onclick="showTab('pipeline',this)">Pipeline</button>
+    <button class="tab"     onclick="showTab('content',this)">Content</button>
+    <button class="tab"     onclick="showTab('monthly',this)">Monthly</button>
   </div>
 
   <!-- ═══════════════════════════════════════ DASHBOARD ══ -->
@@ -1114,7 +710,7 @@ textarea.inp {
 
     <div class="add-form-wrap" id="addClientForm">
       <div style="font-size:14px;font-weight:600;margin-bottom:4px">New Client Registration</div>
-      <div style="font-size:11px;color:var(--mid);margin-bottom:16px">All fields save to your Google Sheet when you click Save Client.</div>
+      <div style="font-size:11px;color:var(--mid);margin-bottom:16px">All fields saved locally in session. Use Google Form for permanent records.</div>
 
       <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--coral);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--rule)">Personal Information</div>
       <div class="form-grid" style="margin-bottom:12px">
@@ -1242,6 +838,111 @@ textarea.inp {
   </div>
 
 
+  <!-- ═══════════════════════════════════════ GOALS ══ -->
+  <div class="panel" id="panel-goals">
+    <div class="sec-head">
+      <div class="sec-title">Business Goals</div>
+      <div class="sec-sub">Track revenue goals, sales goals, audience goals, and operational goals.</div>
+    </div>
+    <div class="card">
+      <div class="form-grid">
+        <div><label class="lbl">Goal Type</label><select class="inp" id="goal_type"><option>Revenue</option><option>Sales</option><option>Leads</option><option>Content</option><option>Operations</option><option>Client Delivery</option></select></div>
+        <div><label class="lbl">Goal Name</label><input class="inp" id="goal_name" placeholder="Example: $5K monthly revenue"></div>
+        <div><label class="lbl">Target Amount</label><input class="inp" id="goal_target" type="number" placeholder="5000"></div>
+        <div><label class="lbl">Current Amount</label><input class="inp" id="goal_current" type="number" placeholder="0"></div>
+        <div><label class="lbl">Deadline</label><input class="inp" id="goal_deadline" type="date"></div>
+        <div><label class="lbl">Status</label><select class="inp" id="goal_status"><option>Not Started</option><option>In Progress</option><option>Completed</option><option>Paused</option></select></div>
+      </div>
+      <label class="lbl">Notes</label><textarea class="inp" id="goal_notes" placeholder="What needs to happen to hit this goal?"></textarea>
+      <button class="btn btn-black btn-lg btn-full" style="margin-top:14px" onclick="saveGoal()">Save Goal</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ EXPENSES ══ -->
+  <div class="panel" id="panel-expenses">
+    <div class="sec-head">
+      <div class="sec-title">Expense Tracker</div>
+      <div class="sec-sub">Track business spending so you can see real profit, not just revenue.</div>
+    </div>
+    <div class="card">
+      <div class="form-grid">
+        <div><label class="lbl">Date</label><input class="inp" id="expense_date" type="date"></div>
+        <div><label class="lbl">Category</label><select class="inp" id="expense_category"><option>Ads</option><option>Software</option><option>Contractor</option><option>Education</option><option>Office</option><option>Legal/Compliance</option><option>Bank Fees</option><option>Other</option></select></div>
+        <div><label class="lbl">Vendor</label><input class="inp" id="expense_vendor" placeholder="Meta, GHL, Canva..."></div>
+        <div><label class="lbl">Amount</label><input class="inp" id="expense_amount" type="number" placeholder="0"></div>
+        <div><label class="lbl">Payment Method</label><select class="inp" id="expense_payment"><option>Business Debit</option><option>Business Credit</option><option>ACH</option><option>Cash App</option><option>PayPal</option><option>Other</option></select></div>
+        <div><label class="lbl">Description</label><input class="inp" id="expense_desc" placeholder="What was this for?"></div>
+      </div>
+      <label class="lbl">Notes</label><textarea class="inp" id="expense_notes"></textarea>
+      <button class="btn btn-coral btn-lg btn-full" style="margin-top:14px" onclick="saveExpense()">Save Expense</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ PIPELINE ══ -->
+  <div class="panel" id="panel-pipeline">
+    <div class="sec-head">
+      <div class="sec-title">Lead Pipeline</div>
+      <div class="sec-sub">Track prospects before they become paying clients.</div>
+    </div>
+    <div class="card">
+      <div class="form-grid">
+        <div><label class="lbl">Full Name</label><input class="inp" id="lead_name" placeholder="Lead name"></div>
+        <div><label class="lbl">Contact</label><input class="inp" id="lead_contact" placeholder="Email, phone, or @handle"></div>
+        <div><label class="lbl">Source</label><select class="inp" id="lead_source"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube</option><option>Referral</option><option>Website</option><option>Live Event</option><option>Other</option></select></div>
+        <div><label class="lbl">Interest</label><select class="inp" id="lead_interest"><option>Free Guide</option><option>Mini Course</option><option>LLC Setup</option><option>Business Credit</option><option>Funding</option><option>Compliance</option><option>Consultation</option><option>Custom</option></select></div>
+        <div><label class="lbl">Stage</label><select class="inp" id="lead_stage"><option>New Lead</option><option>Contacted</option><option>Needs Follow-Up</option><option>Booked Call</option><option>Invoice Sent</option><option>Won</option><option>Lost</option></select></div>
+        <div><label class="lbl">Follow-Up Date</label><input class="inp" id="lead_follow" type="date"></div>
+      </div>
+      <label class="lbl">Notes</label><textarea class="inp" id="lead_notes" placeholder="What do they need? What did they ask about?"></textarea>
+      <button class="btn btn-sage btn-lg btn-full" style="margin-top:14px" onclick="saveLead()">Save Lead</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ CONTENT ══ -->
+  <div class="panel" id="panel-content">
+    <div class="sec-head">
+      <div class="sec-title">Content Tracker</div>
+      <div class="sec-sub">Track what you post, where you post it, and what creates leads or sales.</div>
+    </div>
+    <div class="card">
+      <div class="form-grid">
+        <div><label class="lbl">Date</label><input class="inp" id="content_date" type="date"></div>
+        <div><label class="lbl">Platform</label><select class="inp" id="content_platform"><option>Instagram</option><option>TikTok</option><option>Facebook</option><option>YouTube Shorts</option><option>YouTube Long Form</option><option>Email</option></select></div>
+        <div><label class="lbl">Content Type</label><select class="inp" id="content_type"><option>Reel</option><option>Carousel</option><option>Story</option><option>Live</option><option>Short</option><option>Long Video</option><option>Email</option></select></div>
+        <div><label class="lbl">Topic</label><input class="inp" id="content_topic" placeholder="LLC, funding, compliance..."></div>
+        <div><label class="lbl">CTA</label><input class="inp" id="content_cta" placeholder="Comment LLC, link in bio..."></div>
+        <div><label class="lbl">Status</label><select class="inp" id="content_status"><option>Idea</option><option>Filmed</option><option>Edited</option><option>Posted</option><option>Repurposed</option></select></div>
+        <div><label class="lbl">Views</label><input class="inp" id="content_views" type="number" placeholder="0"></div>
+        <div><label class="lbl">Leads</label><input class="inp" id="content_leads" type="number" placeholder="0"></div>
+        <div><label class="lbl">Sales</label><input class="inp" id="content_sales" type="number" placeholder="0"></div>
+      </div>
+      <label class="lbl">Notes</label><textarea class="inp" id="content_notes" placeholder="What worked? What should you repeat?"></textarea>
+      <button class="btn btn-black btn-lg btn-full" style="margin-top:14px" onclick="saveContent()">Save Content</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MONTHLY ══ -->
+  <div class="panel" id="panel-monthly">
+    <div class="sec-head">
+      <div class="sec-title">Monthly Business Review</div>
+      <div class="sec-sub">Know your numbers. Review revenue, expenses, profit, offers, and next month focus.</div>
+    </div>
+    <div class="card">
+      <div class="form-grid">
+        <div><label class="lbl">Month</label><input class="inp" id="month_name" placeholder="April 2026"></div>
+        <div><label class="lbl">Revenue</label><input class="inp" id="month_revenue" type="number"></div>
+        <div><label class="lbl">Expenses</label><input class="inp" id="month_expenses" type="number"></div>
+        <div><label class="lbl">Profit</label><input class="inp" id="month_profit" type="number"></div>
+        <div><label class="lbl">Best Offer</label><input class="inp" id="month_offer" placeholder="What sold best?"></div>
+        <div><label class="lbl">Best Platform</label><input class="inp" id="month_platform" placeholder="IG, TikTok, email..."></div>
+      </div>
+      <label class="lbl">Biggest Lesson</label><textarea class="inp" id="month_lesson"></textarea>
+      <label class="lbl">Next Month Focus</label><textarea class="inp" id="month_focus"></textarea>
+      <button class="btn btn-coral btn-lg btn-full" style="margin-top:14px" onclick="saveMonthlyReview()">Save Monthly Review</button>
+    </div>
+  </div>
+
+
 </div>
 
 <!-- MODAL -->
@@ -1261,9 +962,26 @@ textarea.inp {
 
 <script>
 // ─────────────────────────────────────────────────────────────────────────────
-// GOOGLE SHEETS CONNECTION — CLEAN APPS SCRIPT VERSION
-// This works when this HTML is inside Apps Script as an HTML file named Index.
-// It sends data directly to Code.gs using google.script.run.
+// GOOGLE APPS SCRIPT DIRECT SAVE
+// This version works when the HTML is inside Apps Script as file name: Index
+// ─────────────────────────────────────────────────────────────────────────────
+function postToSheets(sheetName, data) {
+  data.sheet = sheetName;
+
+  if (typeof google !== "undefined" && google.script && google.script.run) {
+    google.script.run
+      .withSuccessHandler(function(response) {
+        console.log("Saved:", response);
+      })
+      .withFailureHandler(function(error) {
+        console.log("Save failed:", error);
+        alert("Data did not save. Make sure you opened the Apps Script Web App link and approved permissions.");
+      })
+      .saveToSheet(data);
+  } else {
+    alert("Open this from your Apps Script Web App link so saving works.");
+  }
+}
 // ─────────────────────────────────────────────────────────────────────────────
 function postToSheets(sheetName, data) {
   data.sheet = sheetName;
@@ -1271,15 +989,16 @@ function postToSheets(sheetName, data) {
   if (typeof google !== 'undefined' && google.script && google.script.run) {
     google.script.run
       .withSuccessHandler(function(response) {
-        console.log('Saved:', response);
+        console.log('Saved to Google Sheets:', response);
       })
       .withFailureHandler(function(error) {
-        console.log('Save failed:', error);
-        alert('Data did not save. Make sure you opened the live Apps Script Web App link and approved permissions.');
+        console.log('Google Sheets save failed:', error);
+        alert('Data did not save. Go to Apps Script and make sure permissions are approved.');
       })
       .saveToSheet(data);
   } else {
-    alert('Open this from the Apps Script Web App link, not as a plain HTML file.');
+    console.log('google.script.run is not available. Open this from the Apps Script Web App link, not as a plain HTML file.');
+    alert('This page must be opened from the Apps Script Web App link for saving to work.');
   }
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1558,21 +1277,14 @@ function toggleTask(i) {
 
   var task = S.tasks[i];
 
-  google.script.run
-    .withSuccessHandler(function(response) {
-      console.log("Task saved:", response);
-    })
-    .withFailureHandler(function(error) {
-      console.log("Task save failed:", error);
-      alert("Task did not save to Google Sheet.");
-    })
-    .saveTaskToSheet({
-      task: task.t,
-      group: task.g,
-      priority: task.p,
-      status: task.done ? "Completed" : "Unchecked",
-      action: task.done ? "Checked" : "Unchecked"
-    });
+  postToSheets("Tasks", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    Task: task.t,
+    Group: task.g,
+    Priority: task.p,
+    Status: task.done ? "Completed" : "Unchecked",
+    Action: task.done ? "Checked" : "Unchecked"
+  });
 
   renderTasks();
   updateDashboard();
@@ -1585,21 +1297,14 @@ function addCustomTask() {
   var pri = $("newTaskPri").value;
   S.tasks.push({ g: "Custom", t: txt, p: pri, done: false });
 
-  google.script.run
-    .withSuccessHandler(function(response) {
-      console.log("Custom task saved:", response);
-    })
-    .withFailureHandler(function(error) {
-      console.log("Custom task save failed:", error);
-      alert("Custom task did not save.");
-    })
-    .saveTaskToSheet({
-      task: txt,
-      group: "Custom",
-      priority: pri,
-      status: "Added",
-      action: "Created"
-    });
+  postToSheets("Tasks", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    Task: txt,
+    Group: "Custom",
+    Priority: pri,
+    Status: "Added",
+    Action: "Created"
+  });
 
   $("newTaskTxt").value = "";
   renderTasks();
@@ -1762,28 +1467,18 @@ function buildReview() {
 }
 
 function saveReview() {
-  var reviewData = [];
-
   for (var i = 0; i < REVIEW_QUESTIONS.length; i++) {
     var input = document.getElementById("rq_" + i);
 
-    reviewData.push({
-      section: REVIEW_QUESTIONS[i].section,
-      question: REVIEW_QUESTIONS[i].q,
-      answer: input ? input.value : ""
+    postToSheets("Weekly Review", {
+      Timestamp: new Date().toLocaleString("en-US"),
+      Section: REVIEW_QUESTIONS[i].section,
+      Question: REVIEW_QUESTIONS[i].q,
+      Answer: input ? input.value : ""
     });
   }
 
-  google.script.run
-    .withSuccessHandler(function(response) {
-      console.log("Review saved:", response);
-      toast("Weekly review saved to Google Sheet ✓", "#6B9B6F");
-    })
-    .withFailureHandler(function(error) {
-      console.log("Weekly review save failed:", error);
-      alert("Weekly review did not save.");
-    })
-    .saveWeeklyReviewToSheet(reviewData);
+  toast("Weekly review saved to Google Sheet ✓", "#6B9B6F");
 }
 
 // ── ACTIVITY LOG ──────────────────────────────────────────────────────────────
@@ -1893,6 +1588,110 @@ function toast(msg, borderColor) {
   window._toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2700);
 }
 
+
+// ── FULL BUSINESS SYSTEM MODULES ─────────────────────────────────────────────
+function clearFields(ids) {
+  ids.forEach(function(id) {
+    var el = $(id);
+    if (el) el.value = "";
+  });
+}
+
+function saveGoal() {
+  postToSheets("Business Goals", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    "Goal Type": $("goal_type").value,
+    "Goal Name": $("goal_name").value,
+    "Target Amount": $("goal_target").value,
+    "Current Amount": $("goal_current").value,
+    Deadline: $("goal_deadline").value,
+    Status: $("goal_status").value,
+    Notes: $("goal_notes").value
+  });
+  toast("Goal saved ✓", "#6B9B6F");
+  clearFields(["goal_name","goal_target","goal_current","goal_deadline","goal_notes"]);
+}
+
+function saveExpense() {
+  postToSheets("Expenses", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    Date: $("expense_date").value,
+    Category: $("expense_category").value,
+    Vendor: $("expense_vendor").value,
+    Description: $("expense_desc").value,
+    Amount: $("expense_amount").value,
+    "Payment Method": $("expense_payment").value,
+    Notes: $("expense_notes").value
+  });
+  toast("Expense saved ✓", "#E07055");
+  clearFields(["expense_vendor","expense_desc","expense_amount","expense_notes"]);
+}
+
+function saveLead() {
+  if (!$("lead_name").value.trim()) { toast("Enter lead name first"); return; }
+  postToSheets("Lead Pipeline", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    "Full Name": $("lead_name").value,
+    Contact: $("lead_contact").value,
+    Source: $("lead_source").value,
+    Interest: $("lead_interest").value,
+    Stage: $("lead_stage").value,
+    "Follow-Up Date": $("lead_follow").value,
+    Notes: $("lead_notes").value
+  });
+  toast("Lead saved ✓", "#6B9B6F");
+  clearFields(["lead_name","lead_contact","lead_follow","lead_notes"]);
+}
+
+function saveContent() {
+  postToSheets("Content Tracker", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    Date: $("content_date").value,
+    Platform: $("content_platform").value,
+    "Content Type": $("content_type").value,
+    Topic: $("content_topic").value,
+    CTA: $("content_cta").value,
+    Status: $("content_status").value,
+    Views: $("content_views").value,
+    Leads: $("content_leads").value,
+    Sales: $("content_sales").value,
+    Notes: $("content_notes").value
+  });
+  toast("Content saved ✓", "#141414");
+  clearFields(["content_topic","content_cta","content_views","content_leads","content_sales","content_notes"]);
+}
+
+function saveMonthlyReview() {
+  var revenue = parseFloat($("month_revenue").value) || 0;
+  var expenses = parseFloat($("month_expenses").value) || 0;
+  if (!$("month_profit").value) $("month_profit").value = revenue - expenses;
+
+  postToSheets("Monthly Review", {
+    Timestamp: new Date().toLocaleString("en-US"),
+    Month: $("month_name").value,
+    Revenue: $("month_revenue").value,
+    Expenses: $("month_expenses").value,
+    Profit: $("month_profit").value,
+    "Best Offer": $("month_offer").value,
+    "Best Platform": $("month_platform").value,
+    "Biggest Lesson": $("month_lesson").value,
+    "Next Month Focus": $("month_focus").value
+  });
+  toast("Monthly review saved ✓", "#E07055");
+}
+
+function setDefaultDates() {
+  var today = new Date().toISOString().split("T")[0];
+  ["expense_date","content_date"].forEach(function(id) {
+    var el = $(id);
+    if (el && !el.value) el.value = today;
+  });
+  var monthEl = $("month_name");
+  if (monthEl && !monthEl.value) {
+    monthEl.value = new Date().toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  }
+}
+
 // ── INIT ─────────────────────────────────────────────────────────────────────
 buildOffers();
 initTasks();
@@ -1900,6 +1699,7 @@ buildReview();
 renderCRM();
 updateDashboard();
 setEnergy(7);
+setDefaultDates();
 </script>
 </body>
 </html>
